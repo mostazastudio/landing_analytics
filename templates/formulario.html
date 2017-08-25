@@ -1,0 +1,49 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carogobot Registration</title>
+    <link rel="stylesheet" href="https://s3-us-west-1.amazonaws.com/mostazalanding/css/foundation.css">
+    <link rel="stylesheet" href="https://s3-us-west-1.amazonaws.com/mostazalanding/css/app.css">
+  </head>
+  <body>
+    <div class="row column expanded contenedor">
+      <div class="row logo">
+        <div class="column small-centered medium-centered large-centered">
+          <img src="img/logo.png" class="float-center">
+        </div>
+      </div>
+      <div class="row titulos_formulario">
+        <div class="column small-centered medium-centered large-centered titulo">
+          <h1 class="text-center titulo_principal">The best way to connect carriers and shippers</h1>
+          <h3 class="text-center subtitulo">Shippers nationwide are operating with our 3TN. To begin your registration process fill in the<br>information required below. Get clients every day!</h3>          
+        </div>
+      </div>
+      <div class="row formulario">
+          <form method="POST" action="">{%csrf_token%}
+              <div class="column small-centered medium-centered large-centered large-4 medium-6 small-10">
+                <!--<input type="text" name="" placeholder="Nombres">
+                <input type="text" name="" placeholder="Apellidos">
+                <input type="text" name="" placeholder="Celular">
+                <input type="email" name="" placeholder="Correo Electronico">-->
+                {{form}}
+                <input type="submit" name="" class="button warning expanded" value="APRENDER GOOGLE ANALYTICS">
+              </div>
+          </form>
+      </div>
+      <div class="row">
+        <div class="column small-centered medium-centered large-centered">
+          <p class="text-center textos_w">A member from our CargoBot team will contact you within 24 hours.</p>
+          <p class="text-center textos_w">Visit us at <a href="#">cargobot.io</a></p>
+          <p class="text-center textos_w copyright">Copyright Cargobot. All rights reserverd.</p>
+        </div>
+      </div>
+    </div>
+    <script src="https://s3-us-west-1.amazonaws.com/mostazalanding/js/vendor/jquery.js"></script>
+    <script src="https://s3-us-west-1.amazonaws.com/mostazalanding/js/vendor/what-input.js"></script>
+    <script src="https://s3-us-west-1.amazonaws.com/mostazalanding/js/vendor/foundation.js"></script>
+    <script src="https://s3-us-west-1.amazonaws.com/mostazalanding/js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+Hola
+Hay un nuevo registro de una persona interesada en el curso de google analytics:</p>
+Nombre: {{nombre}}
+Correo: {{correo}}
+Celular:{{celular}}
+Llamalo en cuento puedas
