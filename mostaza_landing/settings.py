@@ -26,7 +26,7 @@ SECRET_KEY = 'digu1m*5j@k9e7cy%w!h^d^pg8x25j$kme6(nlyylp63h7po1o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = ["*"]
 
 EMAIL_HOST = "smtp.sendgrid.net"
 EMAIL_HOST_USER = "mateoperalta"
@@ -123,3 +123,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+DISABLE_COLLECTSTATIC=1
