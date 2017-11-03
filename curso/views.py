@@ -13,6 +13,8 @@ from django import forms
 from django.template.loader import render_to_string
 #Para acceder a la URL de los documentos adjuntos
 import urllib2
+#Para redirigir despues a la pagina de agradecimiento.
+from django.http import HttpResponseRedirect#Para redirigir despues a la pagina de agradecimiento.
 
 # Create your views here.
 def  landing_analytics(request):#Funcion para decir que renderice un html
@@ -20,11 +22,20 @@ def  landing_analytics(request):#Funcion para decir que renderice un html
 
 def formulario(request): # Funcion para que renderice otro html
 	#Estoy llamando el formulario que cree en forms.py y que ya tiene vinculado el modelo
-	formulario_prospecto = ProspectoForm(request.POST or None)
+	formulario_prospecto = ProspectoForm(
+    	request.POST or None,
+    	initial={#Con los initial estoy capturando los parametros de la URL
+    		"source": request.GET.get("utm_source"),#capturando el parametro utm_source y guardandolo el el campo del formulario "source"
+    		"medium": request.GET.get("utm_medium"),#capturando el parametro utm_medium y guardandolo el el campo del formulario "medium"
+    		"campaign": request.GET.get("utm_campaign"),#capturando el parametro utm_campaign y guardandolo el el campo del formulario "campaign"
+    		"content": request.GET.get("utm_content"),#capturando el parametro utm_content y guardandolo el el campo del formulario "content"
+		}
+	)
 	#Un if condicional para validar si el formulario se diligencio
 	if formulario_prospecto.is_valid():
 		#Si el formulario se diligencio, lo guardo con el metodo .save()
 		instance = formulario_prospecto.save()
+		print "instance ={!r}".format(instance)
 		#Capturo el correo que se metio en el formulario, usando un metodo que hice en la clase de forms.py
 		email_prospecto = formulario_prospecto.clean_email()
 		#Capturo el nombre que se metio en el formulario, usando un metodo que hice en la clase de forms.py
@@ -85,9 +96,11 @@ def formulario(request): # Funcion para que renderice otro html
 		#Metodo para enviar el segundo correo
 		email2.send()
 
+		#Aca estoy redirigiendo a la pagina de agradecimiento por que en el form del html redirijo a mi mismo para hacer el envio de los correos y el store de los datos
+		return HttpResponseRedirect("/formulario/thankyou/")
 
 	#Creo un diccionario que funcionara como contexto.
-	context = {"form":formulario_prospecto }# El formulario que traje de forms.py lo convierto en contexto para poder meterlo en el HTML
+	context = {"form":formulario_prospecto}
 	
 	return render(request, "form.html",context)#Renderizo el HTML y el contexto definido.
 

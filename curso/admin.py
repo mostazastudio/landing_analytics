@@ -9,8 +9,8 @@ from .form import ProspectoForm # importando al admin el formulario desde forms
 
 
 class ProspectoAdmin(admin.ModelAdmin):
-	list_display = ["__str__","nombre", "celular", "state"]#esta lista es para poner en la tabla del administrador los datos que estamos recopilando
-	form = ProspectoForm
+	list_display = ["__str__","nombre", "celular", "state", "source", "medium", "campaign", "content"]#esta lista es para poner en la tabla del administrador los datos que estamos recopilando
+	#form = ProspectoForm
 	#class Meta:
 		#model = Prospecto # aca estoy diciendo que el modelo que recopila la data es Prospecto
 

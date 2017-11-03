@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://s3-us-west-1.amazonaws.com/mostazalanding/css/app.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
     <script src="https://use.fontawesome.com/48cf332b07.js"></script>
+    <script type="text/javascript">
+      
+    </script>
   </head>
   <body>
   <div class="row column expanded header">
@@ -21,7 +24,7 @@
       </div>
       <div class="row botoncta">
         <div class=" column small-centered large-centered medium-centered small-10 medium-6 large-3">  
-          <a href="/formulario" class="button expanded warning">Aprender Google Analytics</a>        
+          <a href="/formulario" class="button expanded warning" id="cta">Aprender Google Analytics</a>        
         </div>
       </div>  
     </div>
@@ -248,5 +251,31 @@
     <script src="https://s3-us-west-1.amazonaws.com/mostazalanding/js/vendor/what-input.js"></script>
     <script src="https://s3-us-west-1.amazonaws.com/mostazalanding/js/vendor/foundation.js"></script>
     <script src="https://s3-us-west-1.amazonaws.com/mostazalanding/js/app.js"></script>
+    <script type="text/javascript">
+      function GetURLParameter(sParam){
+        console.log(sParam);
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split("&");
+        for(var i=0; i< sURLVariables.length; i++){
+          var sParameterName = sURLVariables[i].split("=");
+          if(sParameterName[0]== sParam){
+            return sParameterName[1];
+          }
+        }
+      }
+      $(document).ready(function() {
+        $("#cta").on("click", function() {
+          var get_params = "";
+          var href = $(this).attr("href");
+          get_params +="?utm_source=" +  GetURLParameter("utm_source");
+          get_params += "&utm_medium=" + GetURLParameter("utm_medium");
+          get_params += "&utm_campaign=" + GetURLParameter("utm_campaign");
+          get_params += "&utm_content=" + GetURLParameter("utm_content");
+
+          $(this).attr("href", href + get_params);
+        });
+    </script>
+ 
+
   </body>
 </html>

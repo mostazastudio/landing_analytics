@@ -12,6 +12,12 @@ class Prospecto(models.Model):
 	timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
 	profesion = models.CharField(max_length=120, null=True, blank=True)
 	state = models.CharField(max_length=120, null=True, blank=True)
+	source = models.CharField(max_length=200, blank=True, null=True)
+	medium = models.CharField(max_length=200, blank=True, null=True)
+	campaign = models.CharField(max_length=200, blank=True, null=True)
+	content = models.CharField(max_length=200, blank=True, null=True)
+	latitude = models.CharField(max_length=200, blank=True, null=True)
+	longitude = models.CharField(max_length=200, blank=True, null=True)
 
 	def __str__(self):
 		return self.email

@@ -7,14 +7,19 @@ class ProspectoForm(forms.ModelForm):
 		#Defino cual es el modelo que se vincula a este formulario
 		model = Prospecto
 		#Defino que campos de ese modelo voy a usar en este formulario
-		fields = ["nombre","celular", "email"]
+		fields = ["nombre","celular", "email", "source", "medium", "campaign", "content", "longitude", "latitude"]
 		#Con estos widgets, agrego los placeholders a cada campo
 		widgets ={
 			"nombre":forms.TextInput(attrs={"placeholder":"Nombre"}),
 			#"apellido":forms.TextInput(attrs={"placeholder":"Apellidos"}),
 			"celular":forms.TextInput(attrs={"placeholder":"Celular"}),
 			"email":forms.TextInput(attrs={"placeholder":"Correo"}),
-
+			"source":forms.HiddenInput(),#Esto es para crear un campo oculto en el formulario.
+			"medium":forms.HiddenInput(),#Esto es para crear un campo oculto en el formulario.
+			"campaign":forms.HiddenInput(),#Esto es para crear un campo oculto en el formulario.
+			"content":forms.HiddenInput(),#Esto es para crear un campo oculto en el formulario.
+			"latitude":forms.HiddenInput(),#Esto es para crear un campo oculto en el formulario.
+			"longitude":forms.HiddenInput(),#Esto es para crear un campo oculto en el formulario.
 		}
 
 	#Metodo del formulario para capturar el correo y usarlo para varias cosas.

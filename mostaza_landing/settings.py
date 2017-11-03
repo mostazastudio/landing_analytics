@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ["*"]
 
 EMAIL_HOST = "smtp.sendgrid.net"
 EMAIL_HOST_USER = "mateoperalta"
-EMAIL_HOST_PASSWORD = "MostazaStudio2017**"
+EMAIL_HOST_PASSWORD = "MostazaStudio2017***"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'curso',
+    'blog'
 ]
 
 MIDDLEWARE = [
@@ -80,8 +81,11 @@ WSGI_APPLICATION = 'mostaza_landing.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:////{0}'.format(os.path.join(BASE_DIR, 'db.sqlite3')))
-  }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
+    }
+}
 
 
 # Password validation
@@ -122,16 +126,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-import dj_database_url
-DATABASES['default'] = dj_database_url.config()
-
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-ALLOWED_HOSTS = ['*']
-
-DEBUG = False
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass
